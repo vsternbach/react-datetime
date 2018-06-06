@@ -189,8 +189,10 @@ td.rdtYear:hover {
   font-size: 12px
 }
 
-.rdtCounters > div{
-	float: left;
+.rdtCounters > div {
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
 }
 
 .rdtCounter {

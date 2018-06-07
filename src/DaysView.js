@@ -57,8 +57,7 @@ var DateTimePickerDays = createClass({
 			days = [],
 			renderer = this.props.renderDay || this.renderDay,
 			isValid = this.props.isValidDate || this.isValidDate,
-			classes, disabled, dayProps, currentDate
-		;
+			classes, disabled, dayProps, currentDate;
 
 		// Go to the last week of the previous month
 		prevMonth.date( prevMonth.daysInMonth() ).startOf('week');

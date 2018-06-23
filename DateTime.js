@@ -28,7 +28,8 @@ var Datetime = createClass({
 		onBlur: TYPES.func,
 		onChange: TYPES.func,
 		onCancel: TYPES.func,
-		onSave: TYPES.func,
+    onSave: TYPES.func,
+    onOpen: TYPES.func,
 		locale: TYPES.string,
 		input: TYPES.bool,
 		// dateFormat: TYPES.string | TYPES.bool,
@@ -68,7 +69,11 @@ var Datetime = createClass({
 		if( state.open == undefined )
 			state.open = !this.props.input;
 
+		if (this.props.onOpen) {
+      this.props.onOpen(this.props.defaultValue);
+    }
 		state.currentView = this.props.viewMode;
+    state.initialDate = this.props.defaultValue;
 		return state;
 	},
 
@@ -357,7 +362,7 @@ var Datetime = createClass({
           React.createElement('div',
             {key: 'footer', className: 'rdtPicker-footer'}, [this.props.footer ? this.props.footer : '',
               React.createElement('span', {key: 'tpb', className: 'timePickerButtons'},[
-                React.createElement('div', {key: 'cancel', className: 'cancelBtn', onClick: this.props.onCancel.bind(this)}, 'Cancel'),
+                React.createElement('div', {key: 'cancel', className: 'cancelBtn', onClick: this.props.onCancel.bind(this, this.state.initialDate)}, 'Cancel'),
                 React.createElement('div', {key: 'save', className: 'saveBtn ui mini button green', onClick: this.props.onSave.bind(this)}, 'Save')])]
 				)
 			)

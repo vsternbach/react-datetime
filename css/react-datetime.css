@@ -248,3 +248,14 @@ td.rdtYear:hover {
 	font-size: 1.2em;
 	margin-top: 37px;
 }
+
+.rdtPicker-footer .timePickerButtons {
+  position: relative;
+}
+
+.rdtPicker-footer .clear-value {
+  position: absolute;
+  top: 4px;
+  font-size: 12px;
+  font-weight: 700;
+}

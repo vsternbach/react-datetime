@@ -374,7 +374,7 @@ var Datetime = createClass({
                 React.createElement('div', {key: 'save', className: 'saveBtn ui mini button green', onClick: this.props.onSave.bind(this)},
 									this.props.isLoading && this.props.loadingClasses ? React.createElement('i', { className: this.props.loadingClasses}) : 'Save'),
 								this.props.isClearable && this.props.onClear ?
-									React.createElement('div', {key: 'clear', className: 'clear-value', onClick: this.props.onSave.bind(this)}, 'Clear date & time') : ''])]
+									React.createElement('div', {key: 'clear', className: 'clear-value', onClick: this.props.onClear.bind(this)}, 'Clear date & time') : ''])]
 				)
 			)
 		));

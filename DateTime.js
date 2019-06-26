@@ -41,7 +41,11 @@ var Datetime = createClass({
 		strictParsing: TYPES.bool,
 		footer: TYPES.any,
 		header: TYPES.any,
-		timeOnly: TYPES.bool
+		timeOnly: TYPES.bool,
+		isClearable: TYPES.bool,
+		onClear: TYPES.func,
+		isLoading: TYPES.bool,
+		loadingClasses: TYPES.string
 	},
 
 	getDefaultProps: function() {
@@ -59,7 +63,11 @@ var Datetime = createClass({
 			timeFormat: true,
 			dateFormat: true,
 			strictParsing: true,
-			timeOnly: false
+			timeOnly: false,
+      isClearable: false,
+      onClear: nof,
+      isLoading: false,
+      loadingClasses: ''
 		};
 	},
 
@@ -363,7 +371,10 @@ var Datetime = createClass({
             {key: 'footer', className: 'rdtPicker-footer'}, [this.props.footer ? this.props.footer : '',
               React.createElement('span', {key: 'tpb', className: 'timePickerButtons'},[
                 React.createElement('div', {key: 'cancel', className: 'cancelBtn', onClick: this.props.onCancel.bind(this, this.state.initialDate)}, 'Cancel'),
-                React.createElement('div', {key: 'save', className: 'saveBtn ui mini button green', onClick: this.props.onSave.bind(this)}, 'Save')])]
+                React.createElement('div', {key: 'save', className: 'saveBtn ui mini button green', onClick: this.props.onSave.bind(this)},
+									this.props.isLoading && this.props.loadingClasses ? React.createElement('i', { className: this.props.loadingClasses}) : 'Save'),
+								this.props.isClearable && this.props.onClear ?
+									React.createElement('div', {key: 'clear', className: 'clear-value', onClick: this.props.onClear.bind(this)}, 'Clear date & time') : ''])]
 				)
 			)
 		));

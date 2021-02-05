@@ -36,6 +36,10 @@ module.exports = {
    if(typeof this.handleClickOutside !== "function")
      throw new Error("Component lacks a handleClickOutside(event) function for processing outside click events.");
 
+   if (!this.__outsideClickHandler) {
+     return;
+   }
+
    var fn = this.__outsideClickHandler = (function(localNode, eventHandler) {
      return function(evt) {
        evt.stopPropagation();
